@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Love You Luna ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Heart animation */
+.heart {
+    font-size: 120px;
+    animation: zoomOut 2.5s forwards;
+}
+
+@keyframes zoomOut {
+    0% { transform: scale(2); }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+/* Rose */
+.rose {
+    display: none;
+    font-size: 90px;
+    animation: pop 1s ease forwards;
+}
+
+@keyframes pop {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* Love text */
+.text {
+    display: none;
+    font-style: italic;
+    font-size: 34px;
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Button */
+button {
+    margin-top: 25px;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    color: #e91e63;
+}
+
+/* Postcard */
+.postcard {
+    display: none;
+    margin-top: 30px;
+    background: #fff8f0;
+    padding: 25px;
+    width: 320px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    font-style: italic;
+    color: #444;
+    animation: slideUp 1s ease forwards;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Floating hearts & roses */
+.float {
+    position: absolute;
+    font-size: 22px;
+    animation: float 7s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="heart">❤️</div>
+<div class="rose">🌹</div>
+
+<div class="text">
+    I love you Luna ❤️
+</div>
+
+<button onclick="showPostcard()">Click here 💌</button>
+
+<div class="postcard" id="postcard">
+    💖 Dear Luna,<br><br>
+    Years and years of laughter, tears, and adventures together.<br>
+    You're the reason for my smile.<br>
+    Forever with you is where I want to be. 💕
+</div>
+
+<script>
+// Show rose & text after heart blast
+setTimeout(() => {
+    document.querySelector(".rose").style.display = "block";
+    document.querySelector(".text").style.display = "block";
+}, 2500);
+
+// Show postcard
+function showPostcard() {
+    document.getElementById("postcard").style.display = "block";
+}
+
+// Floating hearts & roses
+setInterval(() => {
+    const el = document.createElement("div");
+    el.className = "float";
+    el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌹";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (5 + Math.random()*3) + "s";
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 8000);
+}, 300);
+</script>
+
+</body>
+</html>
